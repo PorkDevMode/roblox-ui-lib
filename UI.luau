@@ -300,7 +300,7 @@ function MacLib:CreateLoading(info)
 	if _activeLoading then return _activeLoading end
 
 	info = info or {}
-	local title    = info.Title    or "Zero Hub"
+	local title    = info.Title    or "Pork Hub"
 	local subtitle = info.Subtitle or "Loading..."
 	local logo     = info.Logo     or "rbxassetid://124065951370906"
 	local width    = info.Width    or 450
@@ -1206,7 +1206,7 @@ function MacLib:Window(Settings)
 	headshot.BackgroundTransparency = 1
 	headshot.BorderSizePixel = 0
 	headshot.Size = UDim2.fromOffset(28, 28)
-	headshot.Image = "rbxassetid://83109184888967"
+	headshot.Image = "rbxassetid://3510447587"
 
 	local uICorner3 = Instance.new("UICorner")
 	uICorner3.CornerRadius = UDim.new(0, 6)
@@ -1234,7 +1234,7 @@ function MacLib:Window(Settings)
 	local displayName = Instance.new("TextLabel")
 	displayName.FontFace = Font.new(assets.interFont, Enum.FontWeight.SemiBold)
 	displayName.RichText = true
-	displayName.Text = "<font color=\"rgb(178,120,255)\">Zero</font> <font color=\"rgb(138,79,255)\">Hub</font>"
+	displayName.Text = "<font color=\"rgb(178,120,255)\">Pork</font> <font color=\"rgb(138,79,255)\">Hub</font>"
 	displayName.TextColor3 = Color3.fromRGB(255, 255, 255)
 	displayName.TextSize = 13
 	displayName.TextTransparency = 0.05
@@ -1247,7 +1247,7 @@ function MacLib:Window(Settings)
 
 	local username = Instance.new("TextLabel")
 	username.FontFace = Font.new(assets.interFont)
-	username.Text = "v2.1  ·  discord.gg/zerohub"
+	username.Text = "https://discord.gg/u5PYuWXVYW"
 	username.TextColor3 = Color3.fromRGB(255, 255, 255)
 	username.TextSize = 11
 	username.TextTransparency = 0.65
