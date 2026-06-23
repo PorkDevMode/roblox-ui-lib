@@ -135,7 +135,7 @@ local function _showCursor(state)
 	else
 		pcall(function() RunService:UnbindFromRenderStep(_cursorBinding) end)
 		if _cursor then _cursor.Visible = false end
-		pcall(function() UserInputService.MouseIconEnabled = _oldMouseIcon end)
+		pcall(function() UserInputService.MouseIconEnabled = false end)
 	end
 end
 
