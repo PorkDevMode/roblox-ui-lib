@@ -14,8 +14,8 @@ local MacLib = {
 		BackgroundColor = Color3.fromRGB(12, 12, 12),
 		MainColor       = Color3.fromRGB(24, 24, 24),
 		AccentColor     = Color3.fromRGB(138, 79, 255),
-		OutlineColor    = Color3.fromRGB(45, 45, 45),
-		FontColor       = Color3.new(1, 1, 1),
+		OutlineColor    = Color3.fromRGB(255,134,83),
+		FontColor       = Color3.new(172, 78, 54),
 	},
 }
 
@@ -98,7 +98,6 @@ local function SafeParentUI(inst, skipHidden)
         pcall(function() inst.Parent = LocalPlayer:WaitForChild("PlayerGui", 5) end)
     end
 end
-
 
 --// Functions
 local function GetGui()
@@ -877,12 +876,6 @@ function MacLib:Window(Settings)
 	baseUICorner.CornerRadius = UDim.new(0, 10)
 	baseUICorner.Parent = base
 
-	local baseUIStroke = Instance.new("UIStroke")
-	baseUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	baseUIStroke.Color = Color3.fromRGB(255, 255, 255)
-	baseUIStroke.Transparency = 0.9
-	baseUIStroke.Parent = base
-
 	local sidebar = Instance.new("Frame")
 	sidebar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	sidebar.BackgroundTransparency = 1
@@ -950,6 +943,14 @@ function MacLib:Window(Settings)
 	stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 	stroke.Color = Color3.fromRGB(255, 255, 255)
 	stroke.Transparency = windowControlSettings.strokeTransparency
+
+    local strokep = Instance.new("UIStroke")
+	strokep.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	strokep.Color = Color3.fromRGB(255, 134, 83)
+	strokep.Transparency = windowControlSettings.strokeTransparency
+    strokep.Parent = base
+    strokep.Thickness = 2
+    strokep.Transparency = 0
 
 	local exit = Instance.new("TextButton")
 	exit.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
@@ -1166,9 +1167,10 @@ function MacLib:Window(Settings)
 	sidebarGroup.Size = UDim2.new(1, 0, 1, -91)
 
 	local userInfo = Instance.new("Frame")
+    userInfo.Name = "userInfo"
 	userInfo.AnchorPoint = Vector2.new(0, 1)
 	userInfo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	userInfo.BackgroundTransparency = 0.97
+	userInfo.BackgroundTransparency = 1
 	userInfo.BorderSizePixel = 0
 	userInfo.Position = UDim2.fromScale(0, 1)
 	userInfo.Size = UDim2.new(1, 0, 0, 50)
@@ -1176,12 +1178,6 @@ function MacLib:Window(Settings)
 	local userInfoCorner = Instance.new("UICorner")
 	userInfoCorner.CornerRadius = UDim.new(0, 8)
 	userInfoCorner.Parent = userInfo
-
-	local userInfoStroke = Instance.new("UIStroke")
-	userInfoStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	userInfoStroke.Color = Color3.fromRGB(255, 255, 255)
-	userInfoStroke.Transparency = 0.93
-	userInfoStroke.Parent = userInfo
 
 	local informationGroup = Instance.new("Frame")
 	informationGroup.BackgroundTransparency = 1
@@ -1193,20 +1189,7 @@ function MacLib:Window(Settings)
 	informationGroupUIPadding.PaddingRight = UDim.new(0, 8)
 	informationGroupUIPadding.Parent = informationGroup
 
-	local informationGroupUIListLayout = Instance.new("UIListLayout")
-	informationGroupUIListLayout.FillDirection = Enum.FillDirection.Horizontal
-	informationGroupUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	informationGroupUIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-	informationGroupUIListLayout.Padding = UDim.new(0, 10)
-	informationGroupUIListLayout.Parent = informationGroup
-
 	local userId = LocalPlayer.UserId
-
-	local headshot = Instance.new("ImageLabel")
-	headshot.BackgroundTransparency = 1
-	headshot.BorderSizePixel = 0
-	headshot.Size = UDim2.fromOffset(28, 28)
-	headshot.Image = "rbxassetid://14521894478"
 
 	local uICorner3 = Instance.new("UICorner")
 	uICorner3.CornerRadius = UDim.new(0, 6)
@@ -1214,50 +1197,15 @@ function MacLib:Window(Settings)
 
 	local baseUIStroke2 = Instance.new("UIStroke")
 	baseUIStroke2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	baseUIStroke2.Color = Color3.fromRGB(138, 79, 255)
+	baseUIStroke2.Color = Color3.fromRGB(255,134,83)
 	baseUIStroke2.Transparency = 0.6
 	baseUIStroke2.Parent = headshot
-
-	headshot.Parent = informationGroup
 
 	local userAndDisplayFrame = Instance.new("Frame")
 	userAndDisplayFrame.BackgroundTransparency = 1
 	userAndDisplayFrame.BorderSizePixel = 0
 	userAndDisplayFrame.LayoutOrder = 1
-	userAndDisplayFrame.Size = UDim2.new(1, -38, 0, 36)
-
-	local userAndDisplayFrameUIListLayout = Instance.new("UIListLayout")
-	userAndDisplayFrameUIListLayout.Padding = UDim.new(0, 2)
-	userAndDisplayFrameUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	userAndDisplayFrameUIListLayout.Parent = userAndDisplayFrame
-
-	local displayName = Instance.new("TextLabel")
-	displayName.FontFace = Font.new(assets.interFont, Enum.FontWeight.SemiBold)
-	displayName.RichText = true
-	displayName.Text = "<font color=\"rgb(178,120,255)\">Pork</font> <font color=\"rgb(138,79,255)\">Hub</font>"
-	displayName.TextColor3 = Color3.fromRGB(255, 255, 255)
-	displayName.TextSize = 13
-	displayName.TextTransparency = 0.05
-	displayName.TextTruncate = Enum.TextTruncate.AtEnd
-	displayName.TextXAlignment = Enum.TextXAlignment.Left
-	displayName.BackgroundTransparency = 1
-	displayName.BorderSizePixel = 0
-	displayName.Size = UDim2.new(1, 0, 0, 16)
-	displayName.Parent = userAndDisplayFrame
-
-	local username = Instance.new("TextLabel")
-	username.FontFace = Font.new(assets.interFont)
-	username.Text = "https://discord.gg/u5PYuWXVYW"
-	username.TextColor3 = Color3.fromRGB(255, 255, 255)
-	username.TextSize = 11
-	username.TextTransparency = 0.65
-	username.TextTruncate = Enum.TextTruncate.AtEnd
-	username.TextXAlignment = Enum.TextXAlignment.Left
-	username.BackgroundTransparency = 1
-	username.BorderSizePixel = 0
-	username.LayoutOrder = 1
-	username.Size = UDim2.new(1, 0, 0, 14)
-	username.Parent = userAndDisplayFrame
+	userAndDisplayFrame.Size = UDim2.new(0.0, -38, 0, 36)
 
 	userAndDisplayFrame.Parent = informationGroup
 
@@ -4115,6 +4063,15 @@ function MacLib:Window(Settings)
 					slide.BorderSizePixel = 0
 					slide.Position = UDim2.fromScale(0, 0.5)
 					slide.Size = UDim2.new(0, 13, 1, 8)
+
+                    local pork = Instance.new("ImageLabel")
+                    pork.Name = "Pork"
+                    pork.Image = "rbxassetid://12946284723"
+                    pork.BackgroundTransparency = 1
+                    pork.Position = UDim2.new(0.35, 0.055)
+                    pork.Size = UDim2.new(0.1, 0.05)
+                    pork.Parent = sidebar
+                    
 
 					local uICorner = Instance.new("UICorner")
 					uICorner.CornerRadius = UDim.new(1, 0)
